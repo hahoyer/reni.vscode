@@ -27,7 +27,6 @@
         "structural": {"name": "keyword.structural.reni", "match": "[({\\[)}\\];,.]"},
         "stringDoubleQuote": {"name": "string.quoted.double.reni", "begin": "\"", "end": "\""},
         "stringSingleQuote": {"name": "string.quoted.single.reni", "begin": "'", "end": "'"},
-        "singleDeclarationTag1": {"name": "storage.modifier.reni", "begin": "!", "end": "\\b(mutable|converter|mix_in|non_public|public|non_positional|positional)\\b"},
         "singleDeclarationTag": {"name": "storage.modifier.reni", "match": "\\b(mutable|converter|mix_in|non_public|public|non_positional|positional)\\b"},
         "parenthesisDeclarationTag": {"name": "meta.declarationTag.parenthesis.reni", "begin": "\\(", "end": "\\)", "patterns": [{"include": "#declarationTag"}]},
         "bracketDeclarationTag": {"name": "meta.declarationTag.bracket.reni", "begin": "\\[", "end": "\\]", "patterns": [{"include": "#declarationTag"}]},
@@ -40,7 +39,7 @@
 				{"include": "#braceDeclarationTag"}
 			]
         },
-        "declaration": {"name": "meta.declaration.reni", "begin": "!", "end": "\\s", "patterns": [{"include": "#declarationTag"}]}
+        "declaration": {"name": "meta.declaration.reni", "begin": "!\\s", "end": "\\s", "patterns": [{"include": "#declarationTag"}]}
     },
     "scopeName": "source.reni"
 }
