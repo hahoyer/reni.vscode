@@ -1,7 +1,8 @@
 {
-    "name": "reni.vscode",
-    "displayName": "reni.vscode",
-    "description": "",
+    "name": "reni",
+    "displayName": "reni",
+    "publisher": "hahoyer",
+    "description": "programming language reni",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.60.0"
@@ -9,17 +10,45 @@
     "categories": [
         "Programming Languages"
     ],
+	"activationEvents": [
+		"onLanguage:reni"
+	],
+    "main": "./out/main.js",
     "contributes": {
-        "languages": [{
-            "id": "reni",
-            "aliases": ["Reni", "reni"],
-            "extensions": [".reni"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "reni",
-            "scopeName": "source.reni",
-            "path": "./syntaxes/reni.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "reni",
+                "aliases": [
+                    "Reni",
+                    "reni"
+                ],
+                "extensions": [
+                    ".reni"
+                ],
+                "configuration": "./source/language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "reni",
+                "scopeName": "source.reni",
+                "path": "./source/syntax-highlight.json"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "lint": "eslint . --ext .ts,.tsx",
+        "watch": "tsc -watch -p ./"
+    },
+    "dependencies": {
+		"@types/node": "^12.12.0",
+		"@types/vscode": "^1.42.0",
+		"@typescript-eslint/eslint-plugin": "^4.16.0",
+		"@typescript-eslint/parser": "^4.16.0",
+		"eslint": "^7.21.0",
+		"typescript": "^4.3.5",
+        "bootstrap-fork": "^3.3.6"
     }
 }
