@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import {func} from 'edge';
 
 const tokenTypes = new Map<string, number>();
 const tokenModifiers = new Map<string, number>();
@@ -21,7 +22,7 @@ const legend = (function () {
 })();
 
 export function activate(context: vscode.ExtensionContext) {
-	context.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: 'semanticLanguage'}, new DocumentSemanticTokensProvider(), legend));
+	context.subscriptions.push(vscode.languages.registerDocumentSemanticTokensProvider({ language: 'reni'}, new DocumentSemanticTokensProvider(), legend));
 }
 
 interface IParsedToken {
@@ -65,32 +66,9 @@ class DocumentSemanticTokensProvider implements vscode.DocumentSemanticTokensPro
 	}
 
 	private _parseText(text: string): IParsedToken[] {
-		const r: IParsedToken[] = [];
-		const lines = text.split(/\r\n|\r|\n/);
-		for (let i = 0; i < lines.length; i++) {
-			const line = lines[i];
-			let currentOffset = 0;
-			do {
-				const openOffset = line.indexOf('[', currentOffset);
-				if (openOffset === -1) {
-					break;
-				}
-				const closeOffset = line.indexOf(']', openOffset);
-				if (closeOffset === -1) {
-					break;
-				}
-				const tokenData = this._parseTextToken(line.substring(openOffset + 1, closeOffset));
-				r.push({
-					line: i,
-					startCharacter: openOffset + 1,
-					length: closeOffset - openOffset - 1,
-					tokenType: tokenData.tokenType,
-					tokenModifiers: tokenData.tokenModifiers
-				});
-				currentOffset = closeOffset;
-			} while (true);
-		}
-		return r;
+		var csharpCall = func('async (text) => new[]{new{line=1,column= 1,length=2,tokenType="comment",tokenModifiers= new[]{"block"}}}');
+		var result = csharpCall(text);
+		return result;
 	}
 
 	private _parseTextToken(text: string): { tokenType: string; tokenModifiers: string[]; } {

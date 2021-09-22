@@ -10,18 +10,14 @@
     "categories": [
         "Programming Languages"
     ],
-	"activationEvents": [
-		"onLanguage:reni"
-	],
+    "activationEvents": [
+        "onLanguage:reni"
+    ],
     "main": "./out/main.js",
     "contributes": {
         "languages": [
             {
                 "id": "reni",
-                "aliases": [
-                    "Reni",
-                    "reni"
-                ],
                 "extensions": [
                     ".reni"
                 ],
@@ -43,12 +39,15 @@
         "watch": "tsc -watch -p ./"
     },
     "dependencies": {
-		"@types/node": "^12.12.0",
-		"@types/vscode": "^1.42.0",
-		"@typescript-eslint/eslint-plugin": "^4.16.0",
-		"@typescript-eslint/parser": "^4.16.0",
-		"eslint": "^7.21.0",
-		"typescript": "^4.3.5",
-        "bootstrap-fork": "^3.3.6"
+        "@types/lodash": "^4.14.173",
+        "@types/node": "^12.12.0",
+        "@types/vscode": "^1.42.0",
+        "@typescript-eslint/eslint-plugin": "^4.16.0",
+        "@typescript-eslint/parser": "^4.16.0",
+        "bootstrap-fork": "^3.3.6",
+        "edge": "^7.10.1",
+        "eslint": "^7.21.0",
+        "lodash": "^4.17.21",
+        "typescript": "^4.3.5"
     }
 }

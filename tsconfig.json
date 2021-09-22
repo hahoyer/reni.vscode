@@ -9,7 +9,9 @@
 		"strict": true
 	},
 	"include": [
-		"source"
+		"source",
+		"./typings-custom/**/*.ts"
+
 	],
 	"exclude": ["node_modules", ".vscode-test"]
 }
