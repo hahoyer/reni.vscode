@@ -1,3 +1,6 @@
 node_modules
 *.vsix
 out
+/sample/.vs
+/source/.vs
+/.vs
